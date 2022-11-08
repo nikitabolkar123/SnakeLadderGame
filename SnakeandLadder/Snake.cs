@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SnakeandLadder
 {
+
     internal class Snake
     {
         public const int Ahead_Move = 1;
@@ -42,10 +43,18 @@ namespace SnakeandLadder
 
                         break;
                 }
-                Console.WriteLine("Step Count is :" + position1);
+                if (position1 < 0)
+                {
+                    Console.WriteLine("Restart the Game");
+                    position1 = 0;
+                    continue;
+                }
+                if (position1 == 0)
+                {
+                    Console.WriteLine("Player 1st Wins the Game");
+                    break;
+                }
             }
         }
     }
 }
-
-

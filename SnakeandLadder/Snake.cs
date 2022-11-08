@@ -8,11 +8,9 @@ namespace SnakeandLadder
     {
         public void player()
         {
-            int Num_Player = 1;
-            int Start_Position = 0;
-
-            Console.WriteLine($" Number Of Player is :{Num_Player}");
-            Console.WriteLine($" Start Position is :{Start_Position}");
+            Random random = new Random();
+            int Die = random.Next(1, 6);
+            Console.WriteLine($"Roll Die is : {Die}");
         }
     }
 }

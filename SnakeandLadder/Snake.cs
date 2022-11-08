@@ -12,10 +12,13 @@ namespace SnakeandLadder
         public void player()
         {
             int position1 = 0;
-            int count = 0;
+            int position2 = 0;
+            int count1 = 0;
+            int count2 = 0;
 
             Random random = new Random();
-            while (position1 != 100)
+
+            while (position1 != 100 || position2 != 100)
             {
                 int MovingCheck = random.Next(1, 6);
                 int StepCheck = random.Next(1, 3);
@@ -54,9 +57,51 @@ namespace SnakeandLadder
                     Console.WriteLine("Player 1st Wins the Game");
                     break;
                 }
-                count++;
+                count1++;
+
+                int MovingCheck1 = random.Next(1, 6);
+                int StepCheck1 = random.Next(1, 3);
+                Console.WriteLine($"Roll Die is : {MovingCheck1}");
+                Console.WriteLine($"Moving Check is : {StepCheck1}");
+
+                switch (StepCheck1)
+                {
+                    case Ahead_Move:
+
+                        position2 = position2 + MovingCheck1;
+                        Console.WriteLine("Ahead Move");
+
+                        break;
+                    case Behind_Move:
+
+                        position2 = position2 - MovingCheck1;
+                        Console.WriteLine("Behind Move");
+
+                        break;
+                    case No_Move:
+
+                        position2 = position2 + MovingCheck1;
+                        Console.WriteLine("No Move");
+
+                        break;
+                }
+                if (position2 < 0)
+                {
+                    Console.WriteLine("Restart the Game");
+                    position2 = 0;
+                    continue;
+                }
+                if (position2 == 0)
+                {
+                    Console.WriteLine("Player 1st Wins the Game");
+                    break;
+                }
+                count2++;
             }
-            Console.WriteLine("Number Of Times Die Win :" + count);
+            Console.WriteLine("Player 1st Dies: " + count1);
+            Console.WriteLine("Player 2nd Dies: " + count2);
+
         }
     }
 }
+
